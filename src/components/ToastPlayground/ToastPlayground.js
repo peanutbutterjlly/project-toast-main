@@ -23,20 +23,20 @@ function ToastPlayground() {
       id: Math.random(),
     };
     setToasts([...toasts, toastToAdd])
-    setVariant(VARIANT_OPTIONS[0]);
     setMessage('');
+    setVariant(VARIANT_OPTIONS[0]);
   }
 
   return (
-    <form className={styles.wrapper} onSubmit={handleSubmit}>
+    <div className={styles.wrapper}>
       <header>
         <img alt="Cute toast mascot" src="/toast.png" />
         <h1>Toast Playground</h1>
       </header>
 
-        <ToastShelf toasts={toasts} handleDismiss={handleDismiss} />
+      <ToastShelf toasts={toasts} handleDismiss={handleDismiss} />
 
-      <div className={styles.controlsWrapper}>
+      <form className={styles.controlsWrapper} onSubmit={handleSubmit}>
         <div className={styles.row}>
           <label
             htmlFor="message"
@@ -80,8 +80,8 @@ function ToastPlayground() {
             <Button>Pop Toast!</Button>
           </div>
         </div>
-      </div>
-    </form>
+      </form>
+    </div>
   );
 }
 
