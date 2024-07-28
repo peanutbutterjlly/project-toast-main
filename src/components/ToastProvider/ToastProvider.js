@@ -1,4 +1,5 @@
 import React from 'react';
+import { useKey } from '../../hooks/use-key-listener';
 
 export const ToastContext = React.createContext();
 
@@ -18,19 +19,7 @@ function ToastProvider({ children }) {
     setToasts(toasts.filter((toast) => toast.id !== id));
   }
 
-  React.useEffect(() => {
-    function handleKeyDown(event) {
-      if (event.code === 'Escape') {
-        setToasts([]);
-      }
-    }
-
-    window.addEventListener('keydown', handleKeyDown);
-
-    return () => {
-      window.removeEventListener('keydown', handleKeyDown);
-    };
-  }, []);
+  useKey(setToasts);
 
   return (
     <ToastContext.Provider value={{ createToasts, dismissToasts, toasts }}>
