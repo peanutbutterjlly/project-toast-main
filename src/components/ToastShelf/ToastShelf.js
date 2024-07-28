@@ -7,10 +7,14 @@ import styles from './ToastShelf.module.css';
 
 function ToastShelf() {
   const { toasts } = React.useContext(ToastContext);
-  console.log(toasts)
 
   return (
-    <ol className={styles.wrapper}>
+    <ol
+      className={styles.wrapper}
+      role="region"
+      aria-live="polite"
+      aria-label="notification"
+    >
       {toasts.map((toast) => (
         <li key={toast.id} className={styles.toastWrapper}>
           <Toast id={toast.id} variant={toast.variant}>
