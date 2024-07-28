@@ -19,7 +19,9 @@ function ToastProvider({ children }) {
     setToasts(toasts.filter((toast) => toast.id !== id));
   }
 
-  useKey(setToasts);
+  const handleEscape = React.useCallback(() => setToasts([]), [])
+
+  useKey(handleEscape);
 
   return (
     <ToastContext.Provider value={{ createToasts, dismissToasts, toasts }}>

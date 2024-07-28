@@ -11,7 +11,7 @@ export function useKey(callback, key='Escape') {
   React.useEffect(() => {
     function handleKeyDown(event) {
       if (event.code === key) {
-        callback([]);
+        callback();
       }
     }
 
